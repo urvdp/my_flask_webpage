@@ -27,7 +27,7 @@ RUN mkdir /state && \
     chown -R jef:jef /state
 
 # copy code & config
-#COPY --chown=jef:jef uwsgi.ini uwsgi.ini
+COPY --chown=jef:jef uwsgi.ini uwsgi.ini
 COPY --chown=jef:jef src code
 
 # switch to jef user
