@@ -28,7 +28,10 @@ RUN mkdir /state && \
 
 # copy code & config
 COPY --chown=jef:jef uwsgi.ini uwsgi.ini
-COPY --chown=jef:jef src code
+COPY src/__init__.py /home/source/code/
+COPY src/setup.py /home/source/code/
+#--chown=jef:jef src code
+#COPY ../my_docker_webserver/nginx.conf /home/source/
 
 # switch to jef user
 USER 1000
@@ -36,7 +39,18 @@ USER 1000
 #TODO: check if assets are needed
 
 #expose port
-EXPOSE 3031
+#EXPOSE 3031
 
-# set default startup command
-CMD ["uwsgi --ini uwsgi.ini"]
+# set default startup command (disabled for first testing)
+#CMD ["uwsgi --ini uwsgi.ini"]
+
+# define entrypoint for example/test
+ENTRYPOINT FLASK_APP=__init__.py flask run --host=0.0.0.0
+#python -m __init__
+
+
+
+# setup directory for ssl keys and get keys stored in ssl folder
+RUN mkdir -p /home/source/ssl
+RUN openssl req -x509 -nodes -newkey rsa:2048 -keyout /home/source/ssl/key.pem -out /home/source/ssl/cert.pem -sha256 -days 365 \
+    -subj "/C=GB/ST=London/L=London/O=Alros/OU=IT Department/CN=localhost"
