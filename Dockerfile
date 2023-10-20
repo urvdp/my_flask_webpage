@@ -28,29 +28,28 @@ RUN mkdir /state && \
 
 # copy code & config
 COPY --chown=jef:jef uwsgi.ini uwsgi.ini
-COPY src/__init__.py /home/source/code/
-COPY src/setup.py /home/source/code/
-#--chown=jef:jef src code
-#COPY ../my_docker_webserver/nginx.conf /home/source/
+COPY --chown=jef:jef src app
+
+#COPY src/__init__.py /home/source/code/
 
 # switch to jef user
 USER 1000
 
-#TODO: check if assets are needed
+# setup app
+RUN python -m app.setup
 
 #expose port
-#EXPOSE 3031
+EXPOSE 3031
 
 # set default startup command (disabled for first testing)
-#CMD ["uwsgi --ini uwsgi.ini"]
+CMD ["uwsgi --ini uwsgi.ini"]
 
 # define entrypoint for example/test
-ENTRYPOINT FLASK_APP=__init__.py flask run --host=0.0.0.0
-#python -m __init__
+#ENTRYPOINT FLASK_APP=__init__.py flask run --host=0.0.0.0
 
 
 
 # setup directory for ssl keys and get keys stored in ssl folder
-RUN mkdir -p /home/source/ssl
-RUN openssl req -x509 -nodes -newkey rsa:2048 -keyout /home/source/ssl/key.pem -out /home/source/ssl/cert.pem -sha256 -days 365 \
-    -subj "/C=GB/ST=London/L=London/O=Alros/OU=IT Department/CN=localhost"
+#RUN mkdir -p /home/source/ssl
+#RUN openssl req -newkey rsa:2048 -nodes -keyout /home/source/ssl/domain.key -x509 -days 365  \
+#    -out /home/source/ssl/domain.crt -subj "/C=DE/ST=Baden-Wuerttemberg/L=Karlsruhe/O=jef/OU=KIT SPZ/CN=localhost"
