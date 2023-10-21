@@ -3,10 +3,10 @@ FROM python:3.11-slim
 MAINTAINER Jan Fenker
 
 # create user
-RUN useradd --home-dir /home/source --create-home --shell /bin/bash --uid 1000 jef
+RUN useradd --home-dir /home/app --create-home --shell /bin/bash --uid 1000 jef
 
 # set workdir
-WORKDIR /home/source
+WORKDIR /home/app
 
 # upgrade system and install requirements (normal and build)
 RUN apt-get update && \
@@ -28,7 +28,7 @@ RUN mkdir /state && \
 
 # copy code & config
 COPY --chown=jef:jef uwsgi.ini uwsgi.ini
-COPY --chown=jef:jef src code
+COPY --chown=jef:jef src src
 
 #COPY src/__init__.py /home/source/code/
 
@@ -36,7 +36,7 @@ COPY --chown=jef:jef src code
 USER 1000
 
 # setup app
-RUN python -m code.setup
+RUN python -m src.setup
 
 #expose port
 EXPOSE 3031
