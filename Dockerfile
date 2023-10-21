@@ -6,7 +6,7 @@ MAINTAINER Jan Fenker
 RUN useradd --home-dir /home/source --create-home --shell /bin/bash --uid 1000 jef
 
 # set workdir
-WORKDIR /home/source/code
+WORKDIR /home/source
 
 # upgrade system and install requirements (normal and build)
 RUN apt-get update && \
@@ -28,7 +28,7 @@ RUN mkdir /state && \
 
 # copy code & config
 COPY --chown=jef:jef uwsgi.ini uwsgi.ini
-COPY --chown=jef:jef src app
+COPY --chown=jef:jef src code
 
 #COPY src/__init__.py /home/source/code/
 
@@ -36,12 +36,12 @@ COPY --chown=jef:jef src app
 USER 1000
 
 # setup app
-RUN python -m app.setup
+RUN python -m code.setup
 
 #expose port
 EXPOSE 3031
 
-# set default startup command (disabled for first testing)
+# set default startup command
 CMD ["uwsgi --ini uwsgi.ini"]
 
 # define entrypoint for example/test
