@@ -1,9 +1,48 @@
-<!doctype html>
-<html>
-    <head>
-        <title>{{ title }} - My flask webpage</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user }}!</h1>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block custom_style %}
+    .webp {
+        background-image: url("{{ url_for('static', filename='img/mystic_castle_courtyard.webp') }}");
+    }
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex row position-absolute bottom-0 start-50 translate-middle-x" style="margin-bottom: 18vh;">
+    <div class="col">
+        <a href=" {{ url_for('crownhall') }}">
+            <i class="bi bi-door-open-fill info-icon"
+                tabindex="0"
+                data-bs-toggle="popover"
+                data-bs-placement="right"
+                data-bs-trigger="hover focus"
+                data-bs-content="Do you enter here?!"></i></a>
+    </div>
+</div>
+
+<div class="d-flex row position-absolute bottom-0 start-50 translate-middle-x" style="margin-bottom: 9vh;">
+    <div class="col" style="margin-right: 6.5vw;">
+        <i class="bi bi-info-circle-fill info-icon"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-placement="left"
+            data-bs-trigger="hover focus"
+            data-bs-content="You are on the right path dear traveller.">
+        </i>
+        <!-- removed attribute: title -->
+    </div>
+</div>
+<!-- Info icon with popover effect: https://www.geeksforgeeks.org/bootstrap-5-popover-component-on-hover/ -->
+
+{% endblock %}
+
+{% block custom_script %}
+    document.addEventListener("DOMContentLoaded", function () {
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl, {
+                customClass: 'custom-popover' // Apply custom styles
+            });
+        });
+    });
+{% endblock %}

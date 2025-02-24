@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block custom_style %}
+    .webp {
+        background-image: url("{{ url_for('static', filename='img/crownhall.webp') }}");
+    }
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex row position-absolute top-0 start-50 translate-middle-x" style="margin-top: 52vh;">
+    <div class="col" style="margin-left: 3.75vw;">
+        <a><i class="bi bi-trophy-fill info-icon" style="font-size: 3rem"
+            tabindex="0"
+            data-bs-toggle="popover"
+            data-bs-placement="top"
+            data-bs-trigger="focus"
+            data-bs-html="true"
+            title="Reward"
+            data-bs-content="You just found the castle's secret! <br> It is <code>{{ user.hex_code | e }}"></i></a>
+    </div>
+</div>
+
+<!--
+<div class="d-flex row position-absolute bottom-0 start-50 translate-middle-x" style="margin-bottom: 9vh;">
+    <div class="col" style="margin-right: 6.5vw;">
+        <i class="bi bi-info-circle-fill info-icon"></i>
+    </div>
+</div>
+-->
+
+{% endblock %}
+
+{% block custom_script %}
+    document.addEventListener("DOMContentLoaded", function () {
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl, {
+                customClass: 'custom-popover' // Apply custom styles
+            });
+        });
+    });
+{% endblock %}
