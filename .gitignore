@@ -1,5 +1,7 @@
 .idea/
-.idea/*
 __pychache__/
 .venv/
+.idea/*
 .pdm-python
+.pdm-build
+.idea
