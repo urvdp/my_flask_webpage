@@ -1,4 +1,4 @@
-from src import app
+from src.my_flask_webpage import app
 from flask import render_template
 
 
@@ -7,3 +7,7 @@ from flask import render_template
 def index():
     user = "Janniboy"
     return render_template('index.html', title='Home', user=user)
+
+@app.route('/login')
+def login():
+    return render_template('login.html', title='Login')

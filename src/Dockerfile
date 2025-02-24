@@ -18,7 +18,7 @@ RUN apt-get update && \
     rm -rf /root/.cache /var/cache/*
 
 # install python requirements and do cleanup
-COPY requirements.txt requirements.txt
+COPY ../requirements.txt requirements.txt
 RUN pip install -U -r requirements.txt --no-cache-dir && \
     rm -rf /root/.cache /var/cache/*
 

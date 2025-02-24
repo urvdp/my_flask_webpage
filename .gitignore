@@ -1,0 +1,5 @@
+.idea/
+.idea/*
+__pychache__/
+.venv/
+.pdm-python
