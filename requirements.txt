@@ -1,2 +1,11 @@
-flask==3.0.0
+blinker==1.6.3
+click==8.1.7
+Flask==3.0.0
+Flask-Assets==2.0
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+rcssmin==1.1.2
 uWSGI==2.0.21
+webassets==2.0
+Werkzeug==3.0.0

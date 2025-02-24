@@ -36,7 +36,7 @@ COPY --chown=jef:jef src src
 USER 1000
 
 # setup app
-RUN python -m src.setup
+#RUN python -m src.setup
 
 #expose port
 EXPOSE 3031

@@ -1,9 +1,8 @@
-<!doctype html>
-<html>
-    <head>
-        <title>{{ title }} - My flask webpage</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user }}!</h1>
-    </body>
-</html>
+{% extends 'base-layout.html' %}
+
+
+{% block body %}
+
+<h1>Hello, {{ user }}!</h1>
+
+{% endblock body %}
