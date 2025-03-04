@@ -12,7 +12,7 @@ def index():
     user = session.get('user')  # session object used to store user data
     if user:
         flash('You are logged in as {}'.format(user['username']))
-    return render_template('index.html', title='Login Challenge', user=user)
+    return render_template('index.html', title='Jan Fenker', user=user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -27,7 +27,7 @@ def login():
         if user is None or not user.check_password(pw):
             flash('Invalid username or password :/')
             return redirect(url_for('login'))
-        # ToDo: use the remember me data
+        # ToDo: use flask login module
         session['user'] = {'username': username, 'email': user.email}
         return redirect(url_for('index'))
     return render_template('login.html', title="Jan's Login Castle", form=form)

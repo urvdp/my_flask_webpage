@@ -15,48 +15,7 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        .bg-static {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed; /* Keeps the background static */
-            height: 100vh; /* Full viewport height */
-        }
 
-        .custom-btn {
-        background-color: white;
-        border: 1px solid #dc3545; /* Red border */
-        color: #dc3545; /* Red text */
-        transition: all 0.3s ease-in-out;
-        }
-
-        .custom-btn:hover {
-        background-color: #dc3545; /* Red background */
-        color: white; /* White text */
-        border-color: #dc3545; /* Keep the red border */
-        }
-
-        .info-icon {
-        color: white; /* Default color */
-        font-size: 1.2rem; /* Default size */
-        transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        .info-icon:hover {
-        color: rgba(37, 42, 160, 0.75); /* Changes to blue on hover */
-        }
-
-        .popover {
-        transition: opacity 0.6s ease-in-out !important;
-        background-color: rgba(255, 255, 255, 0.65) !important; /* Transparent white */
-        }
-
-        .popover-body {
-        border-radius: 8px; /* Smooth corners */
-        background-color: transparent !important; /* Transparent background */
-        color: #333; /* Darker text for readability */
-        padding: 10px;
-        }
 
         {% block custom_style %}
         {% endblock %}

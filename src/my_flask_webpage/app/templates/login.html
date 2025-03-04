@@ -11,7 +11,7 @@ background-image: url("{{ url_for('static', filename='img/mystic_castle_bg.webp'
 {% block content %}
 
 
-<div id="login-card" class="invisible position-absolute top-50 start-0 translate-middle-y" style="width: 28%; margin-left: 5vw; opacity: 0; transition: opacity 15s ease-in-out;">
+<div id="login-card" class="position-absolute top-50 start-0 translate-middle-y" style="width: 28%; margin-left: 5vw;">
     {% if error %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
@@ -63,11 +63,5 @@ background-image: url("{{ url_for('static', filename='img/mystic_castle_bg.webp'
 {% endblock %}
 
 {% block custom_script %}
-document.addEventListener("DOMContentLoaded", function () {
-        setTimeout(function () {
-            let loginCard = document.getElementById("login-card");
-            loginCard.classList.remove("invisible");
-            loginCard.style.opacity = "0.9";
-        }, 1);
-    });
+
 {% endblock %}
