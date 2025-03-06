@@ -3,57 +3,50 @@
 
 
 {% block custom_style %}
-.webp {
-background-image: url("{{ url_for('static', filename='img/mystic_castle_bg.webp') }}");
-}
+
 {% endblock %}
 
 {% block content %}
 
 
-<div id="login-card" class="position-absolute top-50 start-0 translate-middle-y" style="width: 28%; margin-left: 5vw;">
-    {% if error %}
-    <div class="alert alert-danger" role="alert">
-        {{ error }}
-    </div>
-    {% endif %}
-    <div class="card border-2 rounded-4">
-        <div class="card-body p-3 p-md-3 p-xl-4">
-            <div class="row mb-2">
-                <h1>Login</h1>
-            </div>
-            <div class="row">
-                <form action="" method="post" novalidate>
-                    {{ form.csrf_token() }}
-                    <div class="row gy-3 overflow-hidden">
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                {{ fh.form_field(form.user) }}
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating mb-3">
-                                {{ fh.form_field(form.password) }}
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                {{ form.remember_me() }} {{ form.remember_me.label }}
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-grid">
-                                {{ fh.render_submit('Login', 'btn btn-primary') }}
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+        <div class="card border-2 rounded-4">
+            <div class="card-body p-3 p-md-3 p-xl-4">
+                <div class="row mb-2">
+                    <h1>Login</h1>
+                </div>
                 <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end mt-4">
-                            <a href=" {{ url_for('forgot_password') }} ">Forgot password</a>
+                    <form action="" method="post" novalidate>
+                        {{ form.csrf_token() }}
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <div class="form-floating mb-3">
+                                    {{ fh.form_field(form.user) }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    {{ fh.form_field(form.password) }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    {{ fh.render_submit('Login', 'btn btn-success') }}
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

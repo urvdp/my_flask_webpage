@@ -30,7 +30,7 @@ def login():
         # ToDo: use flask login module
         session['user'] = {'username': username, 'email': user.email}
         return redirect(url_for('index'))
-    return render_template('login.html', title="Jan's Login Castle", form=form)
+    return render_template('login.html', title="Internal Login", form=form)
 
 
 @app.route('/forgot_pw')
