@@ -33,18 +33,13 @@ def login():
     return render_template('login.html', title="Internal Login", form=form)
 
 
-@app.route('/forgot_pw')
-def forgot_password():
-    return render_template('forgotPW.html', title='Pieceful Realm')
+@app.route('/projects')
+def projects():
+    return render_template('projects.html', title='Projects')
 
 
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
-    return redirect(url_for('index'))
+    # logout user
 
-@app.route('/crownhall')
-def crownhall():
-    user = session.get('user')
-    user_db = models.User.query.filter_by(username=user["username"]).first()
-    return render_template('crownhall.html', title='Crownhall', user=user_db)
+    return redirect(url_for('index'))
