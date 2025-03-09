@@ -38,6 +38,11 @@ def projects():
     return render_template('projects.html', title='Projects')
 
 
+@app.route('/internal')
+def internal():
+    return render_template('internal.html', title='Internal')
+
+
 @app.route('/logout')
 def logout():
     # logout user

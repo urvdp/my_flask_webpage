@@ -1,15 +1,130 @@
 {% extends "base.html" %}
 
 {% block custom_style %}
+.img_display {
+  height: 300px;
+  background-color: grey;
+}
+{% endblock %}
 
+{% block banner %}
+
+<div class="row img_display">
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 300px; width: auto;">
+                <img src="/static/img/msup_system.jpg" alt="MSUP" class="d-block">
+                <div class="carousel-caption">
+                    <h3>Workshop MSUP</h3>
+                    <p>We were dying so hard!</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="height: 300px; width: auto;">
+                <img src="/static/img/barca.jpg" alt="Barcelona" class="d-block">
+                <div class="carousel-caption">
+                    <h3>Barcelona</h3>
+                    <p>Look, I had some fun afterwards!</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="height: 300px; width: auto;">
+                <img src="/static/img/bosch_schale.jpg" alt="Bosch Schale" class="d-block">
+                <div class="carousel-caption">
+                    <h3>Bosch Internship</h3>
+                    <p>I designed it all by myself!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
 
-<h1>About Me</h1>
-<p>Hi, I am Jan and I am a fan of robotics, automation and web development.
-I am studying Mechatronics and Information Technology at KIT in Karlsruhe. My Bachelor's
-Degree is almost finished and I am eager to continue with my masters.</p>
+<div class="row">
+    <!-- Left side: Picture -->
+    <div class="col-md-3">
+        <div class="sticky-top mt-4">
+            <img src="/static/img/me_with_hat.jpg" alt="Profile Picture"
+                 class="img-fluid img-circle" style="width: 15em;">
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- Right side: About Me text -->
+        <div class="border p-3 mb-3 mt-4">
+            <h2>About Me</h2>
+            <p>Hi, I am Jan and I am a fan of robotics, automation and web development.
+                I am studying Mechatronics and Information Technology at KIT in Karlsruhe. My Bachelor's
+                Degree is almost finished and I am eager to continue with my masters.
+            </p>
+            Check out my <a href="{{ url_for('projects') }}">projects</a>
+            <!-- Social Icons -->
+            <div class="mt-3">
+                <a href="https://github.com/urvdp" target="_blank" class="text-dark me-3">
+                    <i class="fab fa-github fa-2x"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jan-fenker" target="_blank" class="text-dark">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Right side: Education -->
+        <div class="border p-3 mt-3">
+            <h2>Education</h2>
+            <div class="accordion" id="accordionEdu">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <strong>Mechatronics and Information Technology (B. Sc.)</strong>&nbsp; at KIT
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#accordionEdu">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <strong>School Leaving Degree (Abitur)</strong>&nbsp; at Franziskus Gymnasium Mutlangen
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionEdu">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et dolore magna aliqua.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block custom_script %}
