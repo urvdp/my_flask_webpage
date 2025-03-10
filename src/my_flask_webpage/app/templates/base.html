@@ -17,6 +17,26 @@
             background-color: rgba(35, 151, 35, 0.94);
         }
 
+        #toggleButton[aria-expanded="true"] ~ .navbar-collapse .nav-item.position-absolute {
+            position: static !important;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 15px;
+        }
+
+        .footer a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .footer a:hover {
+          text-decoration: underline;
+        }
+
         {% block custom_style %}
         {% endblock %}
     </style>
@@ -25,26 +45,29 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-success">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ url_for('index') }}">Jan Fenker</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button id="toggleButton" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">About Me</a>
+                    <a class="nav-link {% if request.path == url_for('index') %}active{% endif %}" aria-current="page"
+                       href="{{ url_for('index') }}">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
+                    <a class="nav-link {% if request.path == url_for('projects') %}active{% endif %}"
+                       href="{{ url_for('projects') }}">Projects</a>
                 </li>
                 <li class="nav-item position-absolute end-0 me-3">
-                    <a class="nav-link" href=" {{ url_for('login') }} ">Internal</a>
+                    <a class="nav-link {% if request.path == url_for('login') %}active{% endif %}"
+                    href=" {{ url_for('login') }} ">Internal</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 {% block banner %}
-
+<!-- Banner: put a slideshow or something similar here -->
 {% endblock %}
 <div class="container mt-3">
     {% with messages = get_flashed_messages() %}
@@ -63,9 +86,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script>
     setTimeout(function () {
         let alerts = document.querySelectorAll('.alert');
@@ -78,5 +99,25 @@
     {% endblock %}
 </script>
 </body>
+
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+            <!-- Left or center section -->
+            <p class="mb-0 me-md-4">
+                Copyright &copy; Jan Fenker 2025.
+                All rights reserved.
+            </p>
+           <nav class="mt-2 mt-md-0 ms-md-4">
+                <a href="{{ url_for('impressum') }}" class="mx-2">Impressum</a>
+                <a href="{{ url_for('privacy') }}" class="mx-2">Privacy</a>
+                <a href="https://github.com/urvdp/my_flask_webpage" class="mx-2">
+                  <i class="fab fa-github"></i> This repository
+                </a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
 </html>

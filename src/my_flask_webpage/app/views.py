@@ -37,6 +37,13 @@ def login():
 def projects():
     return render_template('projects.html', title='Projects')
 
+@app.route('/impressum')
+def impressum():
+    return render_template('impressum.html', title='Impressum')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html', title='Privacy')
 
 @app.route('/internal')
 def internal():
