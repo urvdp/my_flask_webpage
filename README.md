@@ -8,7 +8,26 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+Note: On Windows the activate path is different:
+```bash
+.\.venv\Scripts\activate
+
+# To deactivate
+.\.venv\Scripts\deactivate
+```
+
+To upgrade pip:
+```bash
+python -m pip install --upgrade pip
+```
+
 PDM is used for package management. 
+```bash
+pdm install
+```
+
+Note: On windows uwsgi cannot be installed because it is a unix only package. You need to skip the installation process.
+
 
 # Deployment
 
