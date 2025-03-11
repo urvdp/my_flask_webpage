@@ -1,9 +1,9 @@
-from my_flask_webpage.app import app
+from src.my_flask_webpage.app import app
 from flask import render_template, session, flash, url_for, redirect
 
-from my_flask_webpage.app.forms import LoginForm
-from my_flask_webpage.app import db
-from my_flask_webpage.app import models
+from src.my_flask_webpage.app.forms import LoginForm
+from src.my_flask_webpage.app import db
+from src.my_flask_webpage.app import models
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -37,13 +37,16 @@ def login():
 def projects():
     return render_template('projects.html', title='Projects')
 
+
 @app.route('/impressum')
 def impressum():
     return render_template('impressum.html', title='Impressum')
 
+
 @app.route('/privacy')
 def privacy():
     return render_template('privacy.html', title='Privacy')
+
 
 @app.route('/internal')
 def internal():

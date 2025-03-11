@@ -4,7 +4,7 @@ So far:
 - User: defines the user model
 """
 
-from my_flask_webpage.app import db
+from src.my_flask_webpage.app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
 
