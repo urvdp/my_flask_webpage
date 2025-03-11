@@ -21,6 +21,10 @@
             position: static !important;
         }
 
+        #intern:hover .fa-user-lock {
+            animation: fa-bounce 1s infinite;
+        }
+
         .footer {
             background-color: #343a40;
             color: #fff;
@@ -59,8 +63,8 @@
                        href="{{ url_for('projects') }}">Projects</a>
                 </li>
                 <li class="nav-item position-absolute end-0 me-3">
-                    <a class="nav-link {% if request.path == url_for('login') %}active{% endif %}"
-                    href=" {{ url_for('login') }} ">Internal</a>
+                    <a id="intern" class="nav-link {% if request.path == url_for('login') %}active{% endif %}"
+                    href=" {{ url_for('login') }} "><i class="fa-solid fa-user-lock"></i> Internal</a>
                 </li>
             </ul>
         </div>

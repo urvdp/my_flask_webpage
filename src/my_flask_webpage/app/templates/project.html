@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block custom_style %}
+    .container {
+        margin-top: 20px;
+    }
+    .project-section {
+        margin-bottom: 30px;
+    }
+    .project-section h2 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .project-section h4 {
+        display: inline-block;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    .project-section p {
+        text-align: justify;
+    }
+    .fa-fade {
+        animation-duration: 3s;
+    }
+    .fa-spin {
+        animation-duration: 13s;
+    }
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>
+        <i class="fa-solid fa-gear fa-spin fa-lg"></i>
+        {{ project_title }}
+    </h1>
+    <p>
+        {% block period %}
+        <!-- Content for period goes here -->
+        {% endblock %}
+    </p>
+    <div class="project-section">
+        <h2>
+            <i class="fa-solid fa-lightbulb fa-fade" style="color: #FFD43B;"></i>
+            Project Idea
+        </h2>
+        <p>
+        {% block project_idea %}
+        <!-- Content for project idea goes here -->
+        {% endblock %}
+        </p>
+    </div>
+
+    <div class="project-section">
+        <h2>
+            <i class="fa-solid fa-file-alt" style="color: #8c7e79;"></i>
+            Description
+        </h2>
+        <p>
+        {% block description %}
+        <!-- Content for background goes here -->
+        {% endblock %}
+        </p>
+    </div>
+
+    <div class="project-section">
+        <h2>
+            <i class="fa-solid fa-book" style="color: #63E6BE;"></i>
+            Documentation
+        </h2>
+        {% block docu %}
+        <!-- Content for process documentation goes here -->
+        {% endblock %}
+    </div>
+
+    <div class="project-section">
+        <h2>
+            <i class="fa-solid fa-brain fa-bounce" style="color: #958235;"></i>
+            Personal Takeaway
+        </h2>
+        <p>
+        {% block takeaway %}
+        <!-- Content for a personal takeaway goes here -->
+        {% endblock %}
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block custom_script %}
+
+{% endblock %}

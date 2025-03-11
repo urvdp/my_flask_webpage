@@ -35,7 +35,41 @@ def login():
 
 @app.route('/projects')
 def projects():
-    return render_template('projects.html', title='Projects')
+    projects = [
+        {
+            'title': 'Web-Hosting on Raspberry Pi',
+            'image': 'img/barca.jpg',
+            'alt': 'Raspberry Pi',
+            'description': 'I set up a web server on a Raspberry Pi 4 and hosted my own website on it.',
+            'link': 'raspbi_webhost'
+        },
+        {
+            'title': 'Self-Collision Avoidance and Joint Limit Avoidance on ARMAR-6 humanoid',
+            'image': 'img/ba/env_collisions.png',
+            'alt': 'Bachelor\'s Thesis',
+            'description': 'As part of my bachelor\'s thesis, I integrated safety constraints into a hierarchical '
+                           'real-time controller.',
+            'link': None,
+            'cc': 'https://mujoco.org/'
+        },
+        {
+            'title': 'MSUP Workshop',
+            'image': 'img/msup_system.jpg',
+            'alt': 'MSUP Workshop',
+            'description': 'Design of a cooperative mechatronic system in interdisciplinary teams',
+            'link': 'msup'
+        },
+        {
+            'title': 'Development and Maintenance of Student Registration Platform',
+            'image': 'img/spz_page.png',
+            'alt': 'SPZ',
+            'description': 'Added new features to the student registration platform for '
+                           'the Sprachenzentrum at KIT.',
+            'link': None,
+            'link_ext': 'https://github.com/spz-signup'
+        }
+    ]
+    return render_template('projects.html', title='Projects', projects=projects)
 
 
 @app.route('/impressum')
@@ -58,3 +92,15 @@ def logout():
     # logout user
 
     return redirect(url_for('index'))
+
+# project views go here
+
+@app.route('/projects/msup')
+def msup():
+    project_title = 'MSUP Workshop'
+    return render_template('projects/msup.html', title='MSUP', project_title=project_title)
+
+@app.route('/projects/raspbi_webhosting')
+def raspbi_webhost():
+    project_title = 'Web-Hosting on Raspberry Pi'
+    return render_template('projects/raspbi_webhost.html', title='Raspberry Pi Web-Hosting', project_title=project_title)

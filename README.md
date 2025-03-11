@@ -38,6 +38,10 @@ Set the `FLASK_APP` environment variable.
 export FLASK_APP=src/my_flask_webpage/__init__.py
 ```
 
+On windows in windows powershell:
+```bash
+$env:FLASK_APP = "src/my_flask_webpage/__init__.py"
+```
 
 ## Production Environment
 

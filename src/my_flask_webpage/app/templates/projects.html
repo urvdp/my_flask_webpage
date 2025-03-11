@@ -1,17 +1,62 @@
 {% extends "base.html" %}
 
 {% block custom_style %}
-
+    a {
+    text-decoration: none;
+    }
+    .card:hover {
+    transform: scale(1.03);
+    border: 2px solid #007bff;
+    }
+    .card-body {
+    height: 130px;
+    overflow: hidden;
+    }
+    .card-img-top {
+    height: 40vh;
+    object-fit: cover;
+    }
 {% endblock %}
 
 {% block content %}
 
-<h1>Projects</h1>
-<p>Here are some of the projects I have been working on:</p>
-<ul>
-    <li><a href="">Web-Hosting on Raspberry Pi 4 B</a></li>
-    <li><a href="">Bachelor's thesis</a></li>
-    <li><a href="">MSUP</a></li>
-</ul>
+    <h1>
+        <i class="fa-solid fa-gears"></i>
+        Projects
+    </h1>
+    <p>Here are some of the projects I have been working on:</p>
+    <div class="row mb-5">
+        {% for project in projects %}
+            <div class="col-md-4 mt-3">
+                {% if project.link %}
+                    <a href="{{ url_for(project.link) }}">
+                {% endif %}
+                {% if project.link_ext %}
+                    <a href="{{ project.link_ext }}" target="_blank">
+                {% endif %}
+
+                <div class="card">
+                    <div style="position: relative; display: inline-block;">
+                        <img src="{{ url_for('static', filename=project.image) }}" class="card-img-top"
+                         alt="{{ project.alt }}">
+                        {% if project.cc %}
+                        <a href="{{ project.cc }}"
+                           style="position: absolute; bottom: 0; right: 0; background: rgba(255, 255, 255, 0.7); padding: 5px; text-decoration: none;">
+                            &copy;
+                            Mujoco Simulation</a>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                </div>
+                {% if project.link or project.link_ext %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
