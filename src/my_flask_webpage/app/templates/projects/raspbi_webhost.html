@@ -19,8 +19,12 @@
     <ul>
         <li>Domain</li>
         <li>Raspberry Pi (min. 2 GB RAM)</li>
-        <li>SD Card (min. 8 Gb)</li>
+        <li>SD Card (min. 8 GB)</li>
+        <li>Power Adapter for Raspberry Pi</li>
     </ul>
+    <p>These things can be bought online. I got it from the
+    <a href="https://www.raspberrypi.com/" target="_blank" class="link">
+        raspberry pi online shop</a>.</p>
     <h4>How To</h4>
     <p>The following webpages helped me with this project: </p>
     <ul>
@@ -38,6 +42,13 @@
                 How To Host a Public Website on Your Home Raspberry Pi
             </a>
         </li>
+        <li>
+            Instructables, author qarthikmb: <a
+                href="https://www.instructables.com/Set-Up-Raspberry-Pi-4-Through-Laptoppc-Using-Ether/"
+                class="link">
+                Set Up Raspberry Pi 4 Through Laptop/pc Using Ethernet Cable
+            </a>
+        </li>
     </ul>
     <p>
 {% endblock %}
@@ -45,14 +56,35 @@
 {% block docu %}
     <div class="row">
         <div class="col-md-6">
-            <img src="{{ url_for('static', filename=project.image.src) }}" alt="Raspberry Pi Webhost" class="img-thumbnail">
+            <img src="{{ url_for('static', filename=project.image.src) }}" alt="Raspberry Pi Webhost"
+                 class="img-thumbnail">
         </div>
         <div class="col-md-6">
             <h4>Domain</h4>
             <p>
-                I bought my domain from a domain provider. It is important to set the DNS settings to the IP address of
-                the
-                Raspberry Pi. This can be done in the domain provider's settings.
+                I bought my domain from a domain provider. In normally they do not cost much.
+                The next things we need are a web server that will host our website and respond to requests from any
+                possible client. As pointed out, the Raspberry Pi is a great choice for this purpose. The other thing
+                we also need, is a webpage with content we want to host.
+            </p>
+            <h4>Step 1: Creation of a web page</h4>
+            <p>
+                There are many ways to create a webpage. The more user-friendly way is to use a CMS like WordPress or
+                Joomla.
+                My website is based on the python's
+                <a href="https://flask.palletsprojects.com/en/stable/" class="link">Flask framework</a>. Therefore,
+                I followed Miguel Grinberg's <a
+                    href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world" class="link">
+                Flask Mega-Tutorial</a>. Jinja2 templating is used together with the CSS framework Bootstrap5 powered by
+                Flask's backend framework.
+            </p>
+            <h4>Step 2: Setting up Raspberry Pi for Hosting</h4>
+            <p>
+                I used the Raspberry Pi OS x64 version for my Raspberry Pi 4 Model B. The Raspberry Pi OS is a
+                Debian-based operating system, which I prefer as a ubuntu user. <br>
+                My webpage is embedded inside a docker container. Docker is a great way to manage and
+                deploy applications across multiple operating systems. Moreover, it allows for scalability of many
+                services on only one Raspberry Pi.
             </p>
         </div>
     </div>
