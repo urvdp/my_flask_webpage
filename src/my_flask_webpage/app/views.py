@@ -109,7 +109,20 @@ def logout():
 @app.route('/projects/msup')
 def msup():
     project_title = 'MSUP Workshop'
-    return render_template('projects/msup.html', title='MSUP', project_title=project_title)
+    bg_image = 'img/msup/slide_banner.jpg'
+    gallery = [
+        'cad_lift.jpeg',
+        'cad_slide.jpg',
+        'lift_prototype.jpg',
+        'slide.jpg',
+        'slide_above.jpg',
+        'slide_shaker.jpg',
+        'total.jpg'
+    ]
+    return render_template('projects/msup.html', title='MSUP',
+                           project_title=project_title,
+                           bg_image=bg_image,
+                           gallery=gallery)
 
 @app.route('/projects/raspbi_webhosting')
 def raspbi_webhost():

@@ -1,11 +1,17 @@
 {% extends "project.html" %}
 
-{% block period %}
-Oct 2022 - Feb 2023
+{% block project_css %}
+    .carousel-inner {
+    }
+    .carousel-item img {
+    object-fit: cover;
+    height: 80vh;
+    }
 {% endblock %}
 
-<!-- ToDo: add carousel with pictures -->
-
+{% block period %}
+    Oct 2022 - Feb 2023
+{% endblock %}
 
 {% block project_idea %}
     MSUP is the abreviation for "Mechatronic Systems and Products". It is a module particularly designed
@@ -18,23 +24,81 @@ Oct 2022 - Feb 2023
     </p>
     <h4>Task</h4>
     <p>One team consists of two subgroups of 5 persons each. The overall task is to stack cubes on top of each other
-    using two different cooperating mechatronic sub-systems. One sub-systems is a moving vehicle to collect the cubes.
-    The other one is static and has to stack the cubes on top of each other to a tower that should be as high as possible.
+        using two different cooperating mechatronic sub-systems. One sub-systems is a moving vehicle to collect the
+        cubes.
+        The other one is static and has to stack the cubes on top of each other to a tower that should be as high as
+        possible.
+    </p>
+    <h4>My role</h4>
+    <p>
+        I was part of the team responsible for developing the static system, where I focused on the CAD design of the
+        entire system. Before the project, I have never worked with a CAD program. Despite the steep learning curve,
+        I gradually built up my skills and was able to design two new subsystems with my team: the cube lift and the
+        cube slide.
     </p>
 {% endblock %}
 
 {% block docu %}
-    <p>Check out our presentation video of the final two subsystems.</p>
-    <!-- embed video -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7Q8J9J9Q8J9" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ url_for('static', filename='img/msup/cad_total.jpg') }}"
+                             class="d-block w-100 img-thumbnail"
+                             alt="Static system">
+                    </div>
+                    {% for pic in gallery %}
+                        <div class="carousel-item">
+                            <img src="{{ url_for('static', filename='img/msup/' + pic) }}"
+                                 class="d-block w-100 img-thumbnail"
+                                 alt={{ pic }}>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Static system's subsystems</h4>
+            <ul>
+                <li>Cube lift</li>
+                <li>Slide with sorting mechanism and innovative wheel release mechanism</li>
+                <li>Stacking mechanism (inherited from previous generations)</li>
+            </ul>
+            <h4>Promotional video</h4>
+            <p>Watch an excerpt from our presentation video of the two subsystems:</p>
+            <!-- embed video -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <!-- add hover-to-play class to play video on hover -->
+                <video class="embed-responsive-item w-100" controls>
+                    <source src="{{ url_for('static', filename='img/msup/promo_vid.mp4') }}"
+                            type="video/mp4"/>
+                </video>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block takeaway %}
     <p>
-        For me, this project was very time consuming. I was the leading CAD designer and had to create a lot of parts in
-        a very short time. I learned a lot about CAD construction and how to use CAD programs efficiently. It laid the
-        foundation for my later internship as a mechanical engineer providing me with a lot of basic knowledge.
+        For me, this project was very time consuming. As CAD designer in the static system's team I had to create a lot
+        of parts in a very short time. I learned a lot about CAD construction and how to use CAD programs efficiently.
+        It laid the foundation for my later internship as a mechanical engineer providing me with a lot of basic knowledge.
     </p>
+{% endblock %}
+
+{% block custom_script %}
+    const clip = document.querySelectorAll(".hover-to-play");
+    for (let i = 0; i < clip.length; i++) { clip[i].addEventListener("mouseenter", function (e) { clip[i].play();
+    }); clip[i].addEventListener("mouseout", function (e) { clip[i].pause(); }); }
 {% endblock %}
