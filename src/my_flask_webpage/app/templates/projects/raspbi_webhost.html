@@ -1,16 +1,19 @@
 {% extends "project.html" %}
 
 {% block period %}
-Feb 2025 - now
+    Feb 2025 - now
 {% endblock %}
 
 {% block project_idea %}
-    Hosting a website requires a domain name and a server where the website is running on. I wanted to host my own website
+    Hosting a website requires a domain name and a server where the website is running on. I wanted to host my own
+    website
     to learn more about web hosting and server management in general. Additionally, it is a great way to present myself
     and share some information about me with others. <br>
-    A domain can be acquired quite cheaply. But hosting a webpage on a server is more expensive. A Raspberry Pi is a cheap
+    A domain can be acquired quite cheaply. But hosting a webpage on a server is more expensive. A Raspberry Pi is a
+    cheap
     mini computer that is light on power consumption making it the perfect choice for a web server.
-    Starting with this, it opens up a lot of possibilities to host other services or to extend it to my own cloud server.
+    Starting with this, it opens up a lot of possibilities to host other services or to extend it to my own cloud
+    server.
 {% endblock %}
 
 {% block description %}
@@ -22,18 +25,46 @@ Feb 2025 - now
         <li>Raspberry Pi (min. 2 GB RAM)</li>
         <li>SD Card (min. 8 Gb)</li>
     </ul>
+    <h4>How To</h4>
+    <p>The following webpages helped me with this project: </p>
+    <ul>
+        <li>
+            Raspbians:
+            <a href="https://raspians.com/host-a-website-on-a-raspberry-pi-the-ultimate-guide/#Can_You_Use_A_Raspberry_Pi_To_Host_A_Website"
+               class="link">
+                How To Host A Website On A Raspberry Pi: A Step By Step Guide
+            </a>
+        </li>
+        <li>
+            tom's Hardware:
+            <a href="https://www.tomshardware.com/how-to/host-public-website-raspberry-pi"
+               class="link">
+                How To Host a Public Website on Your Home Raspberry Pi
+            </a>
+        </li>
+    </ul>
+    <p>
 {% endblock %}
 
 {% block docu %}
-    <p>The following webpages helped me with this project: </p>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/static/img/raspbi.jpg" alt="Raspberry Pi Webhost" class="img-thumbnail">
+        </div>
+        <div class="col-md-6">
+            <h4>Domain</h4>
+            <p>
+                I bought my domain from a domain provider. It is important to set the DNS settings to the IP address of the
+                Raspberry Pi. This can be done in the domain provider's settings.
+            </p>
+        </div>
+    </div>
 
 {% endblock %}
 
 {% block takeaway %}
-    <p>
         I always dreamed about having my own webpage. Finally, I had the time to make it happen.
         It was very interesting to learn more details about web hosting and setting up and configuring a server.
         This is only the beginning for further customization and extension of my server with more services e.g. a
         cloud or a self-hosted note-taking tool.
-    </p>
 {% endblock %}

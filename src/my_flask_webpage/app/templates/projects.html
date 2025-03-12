@@ -9,12 +9,42 @@
     border: 2px solid #007bff;
     }
     .card-body {
-    height: 130px;
+    height: 18vh;
     overflow: hidden;
+    }
+    @media (max-width: 576px) {
+    .card-body {
+        height: auto; /* Set the desired height for small screens */
+    }
+    }
+    @media (max-height: 600px) {
+    .card-body .card-text {
+        display: none;
+    }
+    .card-title {
+        white-space: normal; /* Allow the header to wrap to the next line */
+        overflow: hidden; /* Hide the overflowed text */
+        text-overflow: ellipsis; /* Display an ellipsis (...) for overflowed text */
+        display: -webkit-box; /* Use -webkit-box for multi-line ellipsis */
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-box-orient: vertical; /* Set box orientation to vertical */
+    }
     }
     .card-img-top {
     height: 40vh;
     object-fit: cover;
+    }
+    .source-inline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: rgba(0, 0, 0, 1.0);
+    padding: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    }
+    .source-inline:hover {
+    transform: scale(1.03);
     }
 {% endblock %}
 
@@ -38,12 +68,12 @@
                 <div class="card">
                     <div style="position: relative; display: inline-block;">
                         <img src="{{ url_for('static', filename=project.image) }}" class="card-img-top"
-                         alt="{{ project.alt }}">
+                             alt="{{ project.alt }}">
                         {% if project.cc %}
-                        <a href="{{ project.cc }}"
-                           style="position: absolute; bottom: 0; right: 0; background: rgba(255, 255, 255, 0.7); padding: 5px; text-decoration: none;">
-                            &copy;
-                            Mujoco Simulation</a>
+                            <a href="{{ project.cc }}" target="_blank"
+                               class="source-inline">
+                                &copy;
+                                {{ project.cc_author }}</a>
                         {% endif %}
                     </div>
 
