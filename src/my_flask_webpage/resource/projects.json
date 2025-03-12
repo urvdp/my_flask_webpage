@@ -17,13 +17,13 @@
     {
       "title": "Self-Collision Avoidance and Joint Limit Avoidance on ARMAR-6 humanoid",
       "period": "Apr 2024 - Sep 2024",
-      "description": "As part of my bachelor\\'s thesis, I integrated safety constraints into a hierarchical real-time controller.",
+      "description": "As part of my bachelor's thesis, I integrated safety constraints into a hierarchical real-time controller.",
       "link": "",
       "link_ext": "",
       "img_folder": "ba",
       "image": {
         "src": "img/ba/env_collisions.png",
-        "alt": "Bachelor\\'s Thesis",
+        "alt": "Bachelor's Thesis",
         "cc": "https://mujoco.org/",
         "cc_author": "MuJoCo Simulation"
       }
