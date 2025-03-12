@@ -70,11 +70,11 @@
         <div class="container">
             <h1>
                 <i class="fa-solid fa-gear fa-spin fa-lg"></i>
-                {{ project_title }}
+                {{ project.title }}
             </h1>
             <p style="font-size: 18px; margin-top: 1.2em;">
+                {{ project.period }}
                 {% block period %}
-                    <!-- Content for period goes here -->
                 {% endblock %}
             </p>
         </div>

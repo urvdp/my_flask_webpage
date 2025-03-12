@@ -1,0 +1,60 @@
+{
+  "projects": [
+    {
+      "title": "Web-Hosting on Raspberry Pi",
+      "period": "Feb 2025 - now",
+      "description": "I set up a web server on a Raspberry Pi 4 and hosted my own website on it.",
+      "link": "raspbi_webhost",
+      "link_ext": "",
+      "img_folder": "raspbi",
+      "image": {
+        "src": "img/raspbi/raspbi.jpg",
+        "alt": "Raspberry Pi",
+        "cc": "",
+        "cc_author": "Jan Fenker"
+      }
+    },
+    {
+      "title": "Self-Collision Avoidance and Joint Limit Avoidance on ARMAR-6 humanoid",
+      "period": "Apr 2024 - Sep 2024",
+      "description": "As part of my bachelor\\'s thesis, I integrated safety constraints into a hierarchical real-time controller.",
+      "link": "",
+      "link_ext": "",
+      "img_folder": "ba",
+      "image": {
+        "src": "img/ba/env_collisions.png",
+        "alt": "Bachelor\\'s Thesis",
+        "cc": "https://mujoco.org/",
+        "cc_author": "MuJoCo Simulation"
+      }
+    },
+    {
+      "title": "MSUP Workshop",
+      "period": "Oct 2022 - Feb 2023",
+      "description": "Design of a cooperative mechatronic system in interdisciplinary teams",
+      "link": "msup",
+      "link_ext": "",
+      "img_folder": "msup",
+      "image": {
+        "src": "img/msup/msup_system.jpg",
+        "alt": "MSUP Workshop",
+        "cc": "",
+        "cc_author": ""
+      }
+    },
+    {
+      "title": "Development and Maintenance of Student Registration Platform",
+      "period": "Aug 2022 - now",
+      "description": "Added new features to the student registration platform for the Sprachenzentrum at KIT.",
+      "link": "",
+      "link_ext": "https://github.com/spz-signup",
+      "img_folder": "spz",
+      "image": {
+        "src": "img/spz/spz_page.png",
+        "alt": "SPZ Registration Platform",
+        "cc": "",
+        "cc_author": ""
+      }
+    }
+  ]
+}

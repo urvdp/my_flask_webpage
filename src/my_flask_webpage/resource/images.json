@@ -1,0 +1,35 @@
+{
+  "images": [
+    {
+      "src": "img/raspbi.jpg",
+      "alt": "Raspberry Pi",
+      "cc": "",
+      "cc_author": "Jan Fenker"
+    },
+    {
+      "src": "img/raspbi_banner.jpg",
+      "alt": "Raspberry Pi",
+      "cc": "",
+      "cc_author": "Jan Fenker"
+    },
+    {
+      "src": "img/spz_page.png",
+      "alt": "SPZ Registration Platform",
+      "cc": "",
+      "cc_author": "Jan Fenker"
+    },
+    {
+      "src": "img/msup_system.jpg",
+      "alt": "MSUP Workshop - static system",
+      "cc": "",
+      "cc_author": "Jan Fenker"
+    },
+    {
+      "src": "img/ba/env_collisions.png",
+      "alt": "Bachelor\\'s Thesis - collision avoidance",
+      "cc": "https://mujoco.org/",
+      "cc_author": "MuJoCo Simulation"
+    }
+
+  ]
+}

@@ -35,51 +35,7 @@ def login():
 
 @app.route('/projects')
 def projects():
-    # ToDo: read in projects from database
-    #projects = models.Project.query.all()
-    projects = [
-        {
-            'title': 'Web-Hosting on Raspberry Pi',
-            'image': 'img/raspbi.jpg',
-            'alt': 'Raspberry Pi',
-            'description': 'I set up a web server on a Raspberry Pi 4 and hosted my own website on it.',
-            'link': 'raspbi_webhost',
-            'link_ext': None,
-            'cc': None,
-            'cc_author': None
-        },
-        {
-            'title': 'Self-Collision Avoidance and Joint Limit Avoidance on ARMAR-6 humanoid',
-            'image': 'img/ba/env_collisions.png',
-            'alt': 'Bachelor\'s Thesis',
-            'description': 'As part of my bachelor\'s thesis, I integrated safety constraints into a hierarchical '
-                           'real-time controller.',
-            'link': None,
-            'cc': 'https://mujoco.org/',
-            'cc_author': 'MuJoCo Simulation'
-        },
-        {
-            'title': 'MSUP Workshop',
-            'image': 'img/msup_system.jpg',
-            'alt': 'MSUP Workshop',
-            'description': 'Design of a cooperative mechatronic system in interdisciplinary teams',
-            'link': 'msup',
-            'link_ext': None,
-            'cc': None,
-            'cc_author': None
-        },
-        {
-            'title': 'Development and Maintenance of Student Registration Platform',
-            'image': 'img/spz_page.png',
-            'alt': 'SPZ',
-            'description': 'Added new features to the student registration platform for '
-                           'the Sprachenzentrum at KIT.',
-            'link': None,
-            'link_ext': 'https://github.com/spz-signup',
-            'cc': None,
-            'cc_author': None
-        }
-    ]
+    projects = models.Project.query.all()
     return render_template('projects.html', title='Projects', projects=projects)
 
 
@@ -108,28 +64,18 @@ def logout():
 
 @app.route('/projects/msup')
 def msup():
-    project_title = 'MSUP Workshop'
+    project_db = models.Project.query.filter_by(link='msup').first()
     bg_image = 'img/msup/slide_banner.jpg'
-    gallery = [
-        'cad_lift.jpeg',
-        'cad_slide.jpg',
-        'lift_prototype.jpg',
-        'slide.jpg',
-        'slide_above.jpg',
-        'slide_shaker.jpg',
-        'total.jpg'
-    ]
     return render_template('projects/msup.html', title='MSUP',
-                           project_title=project_title,
-                           bg_image=bg_image,
-                           gallery=gallery)
+                           project=project_db,
+                           bg_image=bg_image)
 
 @app.route('/projects/raspbi_webhosting')
 def raspbi_webhost():
-    project_title = 'Web-Hosting on Raspberry Pi'
-    bg_image = 'img/raspbi_banner.jpg'
+    project_db = models.Project.query.filter_by(link='raspbi_webhost').first()
+    bg_image = 'img/raspbi/raspbi_banner.jpg'
     return render_template('projects/raspbi_webhost.html',
                            title='Raspberry Pi Web-Hosting',
-                           project_title=project_title,
+                           project=project_db,
                            bg_image=bg_image)
 

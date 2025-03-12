@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "projects": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "required": [
+          "title",
+          "period",
+          "description",
+          "img_folder",
+          "image"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "link": {
+            "type": "string"
+          },
+          "link_ext": {
+            "type": "string"
+          },
+          "img_folder": {
+            "type": "string",
+            "minLength": 1
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "minLength": 1
+              },
+              "alt": {
+                "type": "string",
+                "minLength": 1
+              },
+              "cc": {
+                "type": "string"
+              },
+              "cc_author": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "projects"
+  ]
+}

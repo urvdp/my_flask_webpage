@@ -1,9 +1,5 @@
 {% extends "project.html" %}
 
-{% block period %}
-    Feb 2025 - now
-{% endblock %}
-
 {% block project_idea %}
     Hosting a website requires a domain name and a server where the website is running on. I wanted to host my own
     website
@@ -49,7 +45,7 @@
 {% block docu %}
     <div class="row">
         <div class="col-md-6">
-            <img src="/static/img/raspbi.jpg" alt="Raspberry Pi Webhost" class="img-thumbnail">
+            <img src="{{ url_for('static', filename=project.image.src) }}" alt="Raspberry Pi Webhost" class="img-thumbnail">
         </div>
         <div class="col-md-6">
             <h4>Domain</h4>

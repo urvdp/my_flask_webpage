@@ -9,10 +9,6 @@
     }
 {% endblock %}
 
-{% block period %}
-    Oct 2022 - Feb 2023
-{% endblock %}
-
 {% block project_idea %}
     MSUP is the abreviation for "Mechatronic Systems and Products". It is a module particularly designed
     for mechatronics students at KIT. It aims to practice the complete development cycle of a mechatronic
@@ -48,11 +44,11 @@
                              class="d-block w-100 img-thumbnail"
                              alt="Static system">
                     </div>
-                    {% for pic in gallery %}
+                    {% for img in project.gallery %}
                         <div class="carousel-item">
-                            <img src="{{ url_for('static', filename='img/msup/' + pic) }}"
+                            <img src="{{ url_for('static', filename='img/msup/' + img.src) }}"
                                  class="d-block w-100 img-thumbnail"
-                                 alt={{ pic }}>
+                                 alt={{ img.alt }}>
                         </div>
                     {% endfor %}
                 </div>

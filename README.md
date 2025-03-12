@@ -60,3 +60,19 @@ These are necessary for the `uwsgi` package. After installing the build tools, y
 ```bash
 docker run -d -p 3031:3031 my_flask_webpage
 ```
+
+### Initialize the Database
+
+On Windows:
+
+```bash
+docker exec -it <container_id> bash
+python -m 'src.my_flask_webpage.setup.init_db'
+```
+
+On Linux:
+
+```bash
+docker exec -it <container_id> bash
+python -m src.my_flask_webpage.setup.init_db
+```
