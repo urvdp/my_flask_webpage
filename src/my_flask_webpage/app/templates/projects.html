@@ -59,7 +59,7 @@
         {% for project in projects %}
             <div class="col-md-4 mt-3">
                 {% if project.link %}
-                    <a href="{{ url_for(project.link) }}">
+                    <a href="{{ url_for('project', link=project.link) }}">
                 {% endif %}
                 {% if project.link_ext %}
                     <a href="{{ project.link_ext }}" target="_blank">

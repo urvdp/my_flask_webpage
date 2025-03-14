@@ -2,11 +2,13 @@
   "projects": [
     {
       "title": "Web-Hosting on Raspberry Pi",
+      "title_brief": "Web-Hosting on Raspberry Pi",
       "period": "Feb 2025 - now",
-      "description": "I set up a web server on a Raspberry Pi 4 and hosted my own website on it.",
+      "description": "You are observing the project's result right now!",
       "link": "raspbi_webhost",
       "link_ext": "",
       "img_folder": "raspbi",
+      "bg_image": "img/raspbi/raspbi_banner.jpg",
       "image": {
         "src": "img/raspbi/raspbi.jpg",
         "alt": "Raspberry Pi",
@@ -16,11 +18,13 @@
     },
     {
       "title": "Self-Collision Avoidance and Joint Limit Avoidance on ARMAR-6 humanoid",
+      "title_brief": "Integrating Safety Constraints",
       "period": "Apr 2024 - Sep 2024",
       "description": "As part of my bachelor's thesis, I integrated safety constraints into a hierarchical real-time controller.",
       "link": "",
       "link_ext": "",
       "img_folder": "ba",
+      "bg_image": "",
       "image": {
         "src": "img/ba/env_collisions.png",
         "alt": "Bachelor's Thesis",
@@ -30,11 +34,13 @@
     },
     {
       "title": "MSUP Workshop",
+      "title_brief": "MSUP Workshop",
       "period": "Oct 2022 - Feb 2023",
       "description": "Design of a cooperative mechatronic system in interdisciplinary teams",
       "link": "msup",
       "link_ext": "",
       "img_folder": "msup",
+      "bg_image": "img/msup/slide_banner.jpg",
       "image": {
         "src": "img/msup/msup_system.jpg",
         "alt": "MSUP Workshop",
@@ -44,6 +50,7 @@
     },
     {
       "title": "Development and Maintenance of Student Registration Platform",
+      "title_brief": "SPZ Registration Platform",
       "period": "Aug 2022 - now",
       "description": "Added new features to the student registration platform for the Sprachenzentrum at KIT.",
       "link": "",

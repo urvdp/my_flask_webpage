@@ -9,10 +9,13 @@ from src.my_flask_webpage.app import models
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    user = session.get('user')  # session object used to store user data
-    if user:
-        flash('You are logged in as {}'.format(user['username']))
-    return render_template('index.html', title='Jan Fenker', user=user)
+    highlights = ['raspbi_webhost', 'msup']
+
+    picked_projects = []
+    for link in highlights:
+        picked_projects.append(models.Project.query.filter_by(link=link).one())
+
+    return render_template('index.html', title='Jan Fenker', projects=picked_projects)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -62,20 +65,10 @@ def logout():
 
 # project views go here
 
-@app.route('/projects/msup')
-def msup():
-    project_db = models.Project.query.filter_by(link='msup').first()
+@app.route('/projects/<link>')
+def project(link):
+    project_db = models.Project.query.filter_by(link=link).one()
     bg_image = 'img/msup/slide_banner.jpg'
-    return render_template('projects/msup.html', title='MSUP',
-                           project=project_db,
-                           bg_image=bg_image)
-
-@app.route('/projects/raspbi_webhosting')
-def raspbi_webhost():
-    project_db = models.Project.query.filter_by(link='raspbi_webhost').first()
-    bg_image = 'img/raspbi/raspbi_banner.jpg'
-    return render_template('projects/raspbi_webhost.html',
-                           title='Raspberry Pi Web-Hosting',
-                           project=project_db,
-                           bg_image=bg_image)
+    return render_template('projects/' + project_db.link + '.html', title=project_db.title_brief,
+                           project=project_db)
 

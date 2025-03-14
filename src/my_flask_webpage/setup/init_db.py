@@ -33,7 +33,7 @@ def insert_resources():
 
 
 def insert_projects_and_images(json_file):
-    with app.open_resource(json_file) as fd:
+    with (app.open_resource(json_file) as fd):
         json_ = json.load(fd)
 
         for project in json_['projects']:
@@ -52,7 +52,9 @@ def insert_projects_and_images(json_file):
                 img_path = os.path.join(current_directory, '..', 'app', 'static', 'img')
                 img_path = os.path.abspath(img_path)
                 for img in os.listdir('{0}/{1}'.format(img_path, img_folder)):
-                    if img.endswith('.jpg' or '.png') and img != main_image.src.split('/')[-1]:
+                    if (img.endswith('.jpg' or '.png')
+                            and (img != main_image.src.split('/')[-1])
+                            and ('banner' not in img)):
                         img_dict = {
                             'project_id': project_db.id,
                             'src': img,

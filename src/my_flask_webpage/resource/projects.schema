@@ -20,6 +20,9 @@
             "type": "string",
             "minLength": 1
           },
+          "title_brief": {
+            "type": "string"
+          },
           "period": {
             "type": "string",
             "minLength": 1
@@ -37,6 +40,9 @@
           "img_folder": {
             "type": "string",
             "minLength": 1
+          },
+          "bg_image": {
+            "type": "string"
           },
           "image": {
             "type": "object",

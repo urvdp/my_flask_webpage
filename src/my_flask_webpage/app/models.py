@@ -36,23 +36,28 @@ class User(db.Model):
 class Project(db.Model):
     """
     This class is the basis for the project entries on the webpage.
-    Each project has a:
-    - title
-    - a principal linked image: main_image
-    - an alternative text for the image: alt
-    - a description
-    - a link to a project page: link (if the link is empty, then it is a generic project page and the project id is used
+    Each project consists of:
+
+    - title: the title of the project
+    - title_brief: a short title for the project
+    - period: the time the project was active
+    - main_image: a principal linked image
+    - bg_image: a bannered background image for the project page or the main page (bg_images are not stored in gallery)
+    - description: a short description of the project
+    - link: a link to a project page (if the link is empty, then it is a generic project page and the project id is used
     to generate the link)
-    - a link to an external page (if wished): link_ext
-    - a list of images: gallery
+    - link_ext: a link to an external page (if wished)
+    - gallery: a list of images associated with the project
 
     """
     __tablename__ = 'project'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128), index=True, unique=True)
+    title_brief = db.Column(db.String(64))
     period = db.Column(db.String(64), nullable=True)
     main_image_id = db.Column(db.Integer, db.ForeignKey('gallery.id'))
+    bg_image = db.Column(db.String(64), nullable=True)
     description = db.Column(db.String(256))
     link = db.Column(db.String(64), nullable=True)
     link_ext = db.Column(db.String(128), nullable=True)
@@ -62,11 +67,16 @@ class Project(db.Model):
     def __repr__(self):
         return '<Project {}>'.format(self.title)
 
-    def __init__(self, title, period, image_id, description, link=None, link_ext=None):
+    def __init__(self, title, title_brief, period, image_id, description, bg_image=None, link=None, link_ext=None):
         self.title = title
+        self.title_brief = title
         self.period = period
         self.main_image_id = image_id
         self.description = description
+        if bg_image and len(bg_image) < 1:
+            self.bg_image = None
+        else:
+            self.bg_image = bg_image
         self.link = link
         self.link_ext = link_ext
 
