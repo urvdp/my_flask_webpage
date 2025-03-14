@@ -54,7 +54,7 @@ def insert_projects_and_images(json_file):
                 for img in os.listdir('{0}/{1}'.format(img_path, img_folder)):
                     if (img.endswith('.jpg' or '.png')
                             and (img != main_image.src.split('/')[-1])
-                            and ('banner' not in img)):
+                            and ('banner' not in img)):  # exclude banner images from gallery
                         img_dict = {
                             'project_id': project_db.id,
                             'src': img,

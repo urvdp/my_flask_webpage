@@ -68,7 +68,6 @@ def logout():
 @app.route('/projects/<link>')
 def project(link):
     project_db = models.Project.query.filter_by(link=link).one()
-    bg_image = 'img/msup/slide_banner.jpg'
     return render_template('projects/' + project_db.link + '.html', title=project_db.title_brief,
                            project=project_db)
 
