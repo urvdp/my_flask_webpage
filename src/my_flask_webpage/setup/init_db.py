@@ -29,6 +29,7 @@ def validate_resources():
 
 def insert_resources():
     insert_projects_and_images('../resource/projects.json')
+    insert_image_metadata('../resource/images.json')
     db.session.commit()
 
 
@@ -57,12 +58,25 @@ def insert_projects_and_images(json_file):
                             and ('banner' not in img)):  # exclude banner images from gallery
                         img_dict = {
                             'project_id': project_db.id,
-                            'src': img,
+                            'src': 'img/{}/{}'.format(img_folder, img),
                             'alt': img.split('.')[0]
                         }
                         img_db = Gallery(**img_dict)
                         db.session.add(img_db)
+            db.session.flush()
 
+def insert_image_metadata(json_file):
+    with (app.open_resource(json_file) as fd):
+        json_ = json.load(fd)
+
+        for image in json_['images']:
+            img_db = Gallery.query.filter_by(src=image['src']).first()
+            if img_db is not None:
+                img_db.alt = image.pop('alt', None)
+                img_db.cc = image.pop('cc', None)
+                img_db.cc_author = image.pop('cc_author', None)
+            else:
+                print("Image '{0}' not found in database.".format(image['src']))
 
 if __name__ == '__main__':
     try:

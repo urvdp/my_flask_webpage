@@ -1,150 +1,170 @@
 {% extends "base.html" %}
 
 {% block custom_style %}
-    .container {
-    margin-top: 20px;
-    }
-    .project-section {
-    margin-bottom: 20px;
-    }
-    .project-section h2 {
-    border-bottom: 2px solid #ddd;
-    margin-top: 15px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    }
-    .project-section h4 {
-    display: inline-block;
-    margin-top: 5px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    }
-    .project-section p {
-    margin-bottom: 15px;
-    margin-top: 0px;
-    }
-    .project-section ul {
-    margin-bottom: 5px;
-    }
-    .project-section img {
-    margin-top: 10px;
-    }
-    .fa-fade {
-    animation-duration: 3s;
-    }
-    .fa-spin {
-    animation-duration: 13s;
-    }
+.container {
+margin-top: 20px;
+}
+.project-section {
+margin-bottom: 20px;
+}
+.project-section h2 {
+border-bottom: 2px solid #ddd;
+margin-top: 15px;
+padding-bottom: 10px;
+margin-bottom: 10px;
+}
+.project-section h4 {
+display: inline-block;
+margin-top: 5px;
+border-bottom: 2px solid #ddd;
+padding-bottom: 5px;
+margin-bottom: 5px;
+}
+.project-section p {
+margin-bottom: 15px;
+margin-top: 0px;
+}
+.project-section ul {
+margin-bottom: 5px;
+}
+.project-section img {
+margin-top: 10px;
+}
+.fa-fade {
+animation-duration: 3s;
+}
+.fa-spin {
+animation-duration: 13s;
+}
 
-    .takeaway-blockquote {
-    border-left: 5px solid #958235;
-    padding: 10px 20px;
-    margin: 20px 0;
-    background-color: #f9f9f9;
-    font-style: italic;
-    }
-    {% if project.bg_image and (project.bg_image | length > 0) %}
-        .bg_banner {
-        position: relative;
-        padding: 20px;
-        }
-        .bg_banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("{{ url_for('static', filename=project.bg_image) }}");
-        background-size: cover;
-        background-position: center;
-        opacity: 0.4;
-        z-index: 0;
-        }
+.takeaway-blockquote {
+border-left: 5px solid #958235;
+padding: 10px 20px;
+margin: 20px 0;
+background-color: #f9f9f9;
+font-style: italic;
+}
 
-        .bg_banner h1, .bg_banner p {
-        position: relative;
-        z-index: 1;
-        }
-    {% endif %}
+.carousel-item .copyright-badge {
+position: absolute;
+bottom: 10px;
+right: 15px;
+z-index: 2;
+display: inline-block;
+background-color: rgba(255, 255, 255, 0.6);
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 0.8rem;
+color: #000;
+text-decoration: none;
+white-space: nowrap;
+}
 
-    {% block project_css %}
-    {% endblock %}
+.carousel-item .copyright-badge:hover {
+text-decoration: underline;
+}
+
+{% if project.bg_image and (project.bg_image | length > 0) %}
+.bg_banner {
+position: relative;
+padding: 20px;
+}
+.bg_banner::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url("{{ url_for('static', filename=project.bg_image) }}");
+background-size: cover;
+background-position: center;
+opacity: 0.4;
+z-index: 0;
+}
+
+.bg_banner h1, .bg_banner p {
+position: relative;
+z-index: 1;
+}
+{% endif %}
+
+{% block project_css %}
+{% endblock %}
 {% endblock %}
 
 {% block banner %}
-    <div {% if project.bg_image and (project.bg_image | length > 0) %} class="bg_banner" {% endif %}>
-        <div class="container">
-            <h1>
-                <i class="fa-solid fa-gear fa-spin fa-lg"></i>
-                {{ project.title }}
-            </h1>
-            <p style="font-size: 18px; margin-top: 1.2em;">
-                {{ project.period }}
-                {% block period %}
-                {% endblock %}
-            </p>
-        </div>
+<div {% if project.bg_image and (project.bg_image | length> 0) %} class="bg_banner" {% endif %}>
+    <div class="container">
+        <h1>
+            <i class="fa-solid fa-gear fa-spin fa-lg"></i>
+            {{ project.title }}
+        </h1>
+        <p style="font-size: 18px; margin-top: 1.2em;">
+            {{ project.period }}
+            {% block period %}
+            {% endblock %}
+        </p>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
 
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="project-section">
-                    <h2>
-                        <i class="fa-solid fa-lightbulb fa-fade" style="color: #FFD43B;"></i>
-                        Project Idea
-                    </h2>
-                    <p>
-                        {% block project_idea %}
-                            <!-- Content for project idea goes here -->
-                        {% endblock %}
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="project-section">
-                    <h2>
-                        <i class="fa-solid fa-file-alt" style="color: #8c7e79;"></i>
-                        Description
-                    </h2>
-                    <p>
-                        {% block description %}
-                            <!-- Content for background goes here -->
-                        {% endblock %}
-                    </p>
-                </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="project-section">
+                <h2>
+                    <i class="fa-solid fa-lightbulb fa-fade" style="color: #FFD43B;"></i>
+                    Project Idea
+                </h2>
+                <p>
+                    {% block project_idea %}
+                    <!-- Content for project idea goes here -->
+                    {% endblock %}
+                </p>
             </div>
         </div>
-
-
-        <div class="project-section">
-            <h2>
-                <i class="fa-solid fa-book" style="color: #63E6BE;"></i>
-                Documentation
-            </h2>
-            {% block docu %}
-                <!-- Content for process documentation goes here -->
-            {% endblock %}
-        </div>
-
-        <div class="takeaway-section">
-            <h2>
-                <i class="fa-solid fa-brain fa-bounce" style="color: #958235;"></i>
-                Personal Takeaway
-            </h2>
-            <blockquote class="takeaway-blockquote">
-                {% block takeaway %}
-                    <!-- Content for a personal takeaway goes here -->
-                {% endblock %}
-            </blockquote>
+        <div class="col-md-8">
+            <div class="project-section">
+                <h2>
+                    <i class="fa-solid fa-file-alt" style="color: #8c7e79;"></i>
+                    Description
+                </h2>
+                <p>
+                    {% block description %}
+                    <!-- Content for background goes here -->
+                    {% endblock %}
+                </p>
+            </div>
         </div>
     </div>
+
+
+    <div class="project-section">
+        <h2>
+            <i class="fa-solid fa-book" style="color: #63E6BE;"></i>
+            Documentation
+        </h2>
+        {% block docu %}
+        <!-- Content for process documentation goes here -->
+        {% endblock %}
+    </div>
+
+    <div class="takeaway-section">
+        <h2>
+            <i class="fa-solid fa-brain fa-bounce" style="color: #958235;"></i>
+            Personal Takeaway
+        </h2>
+        <blockquote class="takeaway-blockquote">
+            {% block takeaway %}
+            <!-- Content for a personal takeaway goes here -->
+            {% endblock %}
+        </blockquote>
+    </div>
+</div>
 {% endblock %}
 
 
