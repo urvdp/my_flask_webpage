@@ -9,7 +9,7 @@
     border: 2px solid #007bff;
     }
     .card-body {
-    height: 18vh;
+    height: 13vw;
     overflow: hidden;
     }
     @media (max-width: 576px) {
@@ -69,7 +69,7 @@
                     <div style="position: relative; display: inline-block;">
                         <img src="{{ url_for('static', filename=project.image.src) }}" class="card-img-top"
                              alt="{{ project.image.alt }}">
-                        {% if project.cc %}
+                        {% if project.image.cc %}
                             <a href="{{ project.image.cc }}" target="_blank"
                                class="source-inline">
                                 &copy;
