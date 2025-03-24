@@ -43,6 +43,14 @@ On windows in windows powershell:
 $env:FLASK_APP = "src/my_flask_webpage/__init__.py"
 ```
 
+## Build Docker Compose Configuration
+### Using nginx-proxy reverse proxy
+
+Connect uWSGI Upstream
+If you would like to connect to uWSGI backend, set VIRTUAL_PROTO=uwsgi on the backend container. 
+Your backend container should then listen on a port rather than a socket and expose that port
+[Source](https://github.com/nginx-proxy/nginx-proxy/tree/main/docs#virtual-hosts-and-ports).
+
 ## Production Environment
 
 ### Build the Docker Image
