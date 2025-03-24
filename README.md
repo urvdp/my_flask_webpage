@@ -61,24 +61,27 @@ These are necessary for the `uwsgi` package. After installing the build tools, y
 docker run -d -p 3031:3031 my_flask_webpage
 ```
 
+For local testing change in `uwsgi.ini`, `socket` to `http`. Then it does not use a socket but a http connection for
+communication. This is useful for local testing. In production, the socket should be used together with a web server like
+nginx, which functions as a reverse proxy.
+
+Connection Diagram:
+
+Browser → Nginx (HTTPS, HTTP) → uWSGI (via socket)
+
+
 ### Initialize the Database
 
 On Windows:
 
 ```bash
 docker exec -it <container_id> bash
-python -m 'src.my_flask_webpage.setup.init_db'
+python -m 'app.setup.init_db'
 ```
 
 On Linux:
 
 ```bash
 docker exec -it <container_id> bash
-python -m src.my_flask_webpage.setup.init_db
+python -m app.setup.init_db
 ```
-
-### Build packages on docker
-Freeze dependencies:	pdm lock or pdm install
-Ensure consistent installs:	pdm install --frozen-lockfile
-Production install:	pdm install --prod
-Dev + prod (local dev):	pdm install
