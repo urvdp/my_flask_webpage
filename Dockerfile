@@ -14,25 +14,20 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the latest version of pip
-RUN pip install --no-cache-dir --upgrade pip
-
-# install pdm
-RUN pip install --no-cache-dir pdm>=2.4.3
+RUN pip install --upgrade pip
 
 # Copy the pdm.lock file
-COPY pyproject.toml pdm.lock ./
+COPY requirements.txt ./
 COPY uwsgi.ini ./
-COPY README.md ./
 
-# install the dependencies via pdm.lock file
-RUN pdm install --frozen-lockfile
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY src/* ./code/
+COPY src/ ./src/
 
 # Set environment variables
-ENV FLASK_APP=app.py
-#ENV FLASK_ENV=production
+ENV FLASK_APP=src/app/__init__.py
 
 # Expose the port the app runs on
 EXPOSE 3031
@@ -42,4 +37,4 @@ USER ubuntu
 
 # Run the application with uWSGI (we need to run it with pdm here, because pdm creates an isolated environment)
 # uwsgi is not installed systemwide
-CMD ["pdm", "run", "uwsgi", "--ini", "uwsgi.ini"]
+CMD ["uwsgi", "--ini", "uwsgi.ini"]

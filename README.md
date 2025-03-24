@@ -50,6 +50,12 @@ $env:FLASK_APP = "src/my_flask_webpage/__init__.py"
 docker build -t my_flask_webpage .
 ```
 
+Note: Obtain requirements from pdm package manager.
+```bash
+pdm export -f requirements --without-hashes > requirements.txt
+```
+
+
 A note to windows users: You need C++ build tools to build the image. You can download it from [here](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
 These are necessary for the `uwsgi` package. After installing the build tools, you need to run the following command:
 ```bash
