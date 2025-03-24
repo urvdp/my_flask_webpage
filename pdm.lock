@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:67cf1b6c40541738b5cd59bcab372a72ba80be2857fbdddcf8a9b636efc72b6a"
+content_hash = "sha256:2402f63ff3bbe8d9462354bf07db4827ee2df998a12c141b1dfc19b657c5788a"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -88,6 +88,21 @@ dependencies = [
 files = [
     {file = "flask-3.1.0-py3-none-any.whl", hash = "sha256:d667207822eb83f1c4b50949b1623c8fc8d51f2341d65f72e1a1815397551136"},
     {file = "flask-3.1.0.tar.gz", hash = "sha256:5f873c5184c897c8d9d1b05df1e3d01b14910ce69607a117bd3277098a5836ac"},
+]
+
+[[package]]
+name = "flask-login"
+version = "0.6.3"
+requires_python = ">=3.7"
+summary = "User authentication and session management for Flask."
+groups = ["default"]
+dependencies = [
+    "Flask>=1.0.4",
+    "Werkzeug>=1.0.1",
+]
+files = [
+    {file = "Flask-Login-0.6.3.tar.gz", hash = "sha256:5e23d14a607ef12806c699590b89d0f0e0d67baeec599d75947bf9c147330333"},
+    {file = "Flask_Login-0.6.3-py3-none-any.whl", hash = "sha256:849b25b82a436bf830a054e74214074af59097171562ab10bfa999e6b78aae5d"},
 ]
 
 [[package]]
@@ -390,7 +405,7 @@ files = [
 [[package]]
 name = "uwsgi"
 version = "2.0.28"
-summary = ""
+summary = "The uWSGI server"
 groups = ["default"]
 files = [
     {file = "uwsgi-2.0.28.tar.gz", hash = "sha256:79ca1891ef2df14508ab0471ee8c0eb94bd2d51d03f32f90c4bbe557ab1e99d0"},

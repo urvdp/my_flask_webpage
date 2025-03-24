@@ -70,10 +70,27 @@
                     <a class="nav-link {% if request.path == url_for('projects') %}active{% endif %}"
                        href="{{ url_for('projects') }}">Projects</a>
                 </li>
-                <li class="nav-item position-absolute end-0 me-3">
-                    <a id="intern" class="nav-link {% if request.path == url_for('login') %}active{% endif %}"
-                    href=" {{ url_for('login') }} "><i class="fa-solid fa-user-lock"></i> Internal</a>
+            </ul>
+
+            <ul class="navbar-nav d-flex flex-row align-items-center">
+                {% if current_user.is_authenticated %}
+                <li class="nav-item me-3">
+                    <a class="nav-link {% if request.path == url_for('internal') %}active{% endif %}"
+                       href="{{ url_for('internal') }}">Internal</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == url_for('login') %}active{% endif %}"
+                       href="{{ url_for('login') }}">
+                        <i class="fa-solid fa-user-lock"></i> Internal
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
