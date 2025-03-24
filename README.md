@@ -1,4 +1,4 @@
-# my_docker_webpage
+# My Flask Webpage
 python Flask web app running on docker
 
 ## Setup virtual environment
