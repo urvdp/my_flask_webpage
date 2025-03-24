@@ -1,0 +1,15 @@
+version: '0.1'
+
+services:
+    web-app:
+        environment:
+            FLASK_ENV: development
+            VIRTUAL_HOST: localhost
+    nginx:
+      ports:
+        - "80:80"
+        - "443:8080"
+
+    postgres:
+      environment:
+        POSTGRES_PASSWORD: dev-password
