@@ -2,9 +2,9 @@ from flask import render_template, flash, url_for, redirect, request
 from flask_login import current_user, login_user, logout_user, login_required
 from urllib.parse import urlsplit
 
-from src.my_flask_webpage.app import app
-from src.my_flask_webpage.app import models
-from src.my_flask_webpage.app.forms import LoginForm
+from app import app
+from app import models
+from app.forms import LoginForm
 
 
 @app.route('/', methods=['GET', 'POST'])

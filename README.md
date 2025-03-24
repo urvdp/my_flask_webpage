@@ -76,3 +76,9 @@ On Linux:
 docker exec -it <container_id> bash
 python -m src.my_flask_webpage.setup.init_db
 ```
+
+### Build packages on docker
+Freeze dependencies:	pdm lock or pdm install
+Ensure consistent installs:	pdm install --frozen-lockfile
+Production install:	pdm install --prod
+Dev + prod (local dev):	pdm install

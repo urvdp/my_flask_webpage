@@ -4,8 +4,8 @@ import sys
 from flask import json
 from jsonschema import validate, ValidationError, SchemaError
 
-from src.my_flask_webpage.app import app, db
-from src.my_flask_webpage.app.models import *
+from app import app
+from app.models import *
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 

@@ -3,37 +3,44 @@ name = "my_flask_webpage"
 version = "0.1.0"
 description = "flask webpage with uwsgi running via docker"
 authors = [
-    {name = "Jan Fenker", email = "coding@fenker.eu"},
+    { name = "Jan Fenker", email = "coding@fenker.eu" },
 ]
 dependencies = [
-    "blinker==1.9.0",
-    "click==8.1.8",
-    "Flask==3.1.0",
-    "itsdangerous==2.2.0",
-    "Jinja2==3.1.5",
-    "MarkupSafe==3.0.2",
-    "uWSGI==2.0.28",
-    "Werkzeug==3.1.3",
-    "wheel==0.45.1",
-    "pdm-backend==2.4.3",
-    "flask-wtf==1.2.2",
-    "wtforms==3.2.1",
-    "Flask-SQLAlchemy==3.1.1",
-    "greenlet==3.1.1",
-    "typing-extensions==4.12.2",
-    "python-dotenv==1.0.1",
-    "dotenv==0.9.9",
-    "jsonschema==4.23.0",
-    "flask-login==0.6.3",
+    "flask",
+    "flask-wtf",
+    "wtforms",
+    "Flask-SQLAlchemy",
+    "flask-login",
+    "python-dotenv",
+    "jsonschema",
+    "uWSGI"
 ]
 requires-python = ">=3.12"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "GPL-3.0-or-later" }
+# alternatively: license = { file = "LICENSE" }
 
 [build-system]
-requires = ["pdm-backend"]
+requires = ["pdm-backend>=2.4.3"]
 build-backend = "pdm.backend"
 
 
 [tool.pdm]
-distribution = true
+# This tells PDM your source is under 'src/'
+package-dir = { "" = "src" }
+
+[tool.pdm.build]
+includes = ["src/", "README.md", "LICENSE", "uwsgi.ini", ".env.example"]
+excludes = ["tests/", "*.pyc", "__pycache__"]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest",
+    "pytest-flask"
+]
+
+[tool.pdm.scripts]
+# Optional: add scripts for running the app
+# run with 'pdm run <script-name>'
+dev = { cmd = "flask run", env = { FLASK_APP = "app", FLASK_ENV = "development" } }
+

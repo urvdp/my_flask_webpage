@@ -1,10 +1,10 @@
 /.idea/
 __pychache__/
 src/__pycache__/
-src/my_flask_webpage/setup/__pycache__/
+src/setup/__pycache__/
 .venv/
 .idea/*
 .pdm-python
 .pdm-build
 src/my_flask_webpage/__pycache__/
-src/my_flask_webpage/app/__pycache__/
+src/app/__pycache__/
