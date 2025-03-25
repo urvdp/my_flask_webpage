@@ -58,9 +58,9 @@ class Project(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128), index=True, unique=True)
-    title_brief = db.Column(db.String(64))
+    title_brief = db.Column(db.String(128))
     period = db.Column(db.String(64), nullable=True)
-    main_image_id = db.Column(db.Integer, db.ForeignKey('gallery.id'))
+    main_image_id = db.Column(db.Integer, db.ForeignKey('gallery.id', name='main_image_ref'))
     bg_image = db.Column(db.String(64), nullable=True)
     description = db.Column(db.String(256))
     link = db.Column(db.String(64), nullable=True)
@@ -94,7 +94,7 @@ class Gallery(db.Model):
 
     # this is a table that links one project to multiple images
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id', name='project_ref'),nullable=True)
     src = db.Column(db.String(64), index=True, unique=True)
     alt = db.Column(db.String(64))
     cc = db.Column(db.String(128), nullable=True)

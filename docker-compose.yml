@@ -1,38 +1,45 @@
-version: '0.1'
 
 services:
   web-app:
     build: .
-    container_name: flask_app_jan
+    container_name: web_app_jan
     restart: unless-stopped
     depends_on:
       - postgres
     environment:
       VIRTUAL_PROTO: uwsgi
       VIRTUAL_PORT: 3031
+    links:
+      - postgres
     networks:
       - backend
     volumes:
       - ./src:/home/app/src
   nginx:
     image: nginxproxy/nginx-proxy:1.7
-    ports:
-      - "80:80"
-      - "443:443"
+    tmpfs:
+      - /var/run
+      - /var/cache/nginx
+      - /tmp
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - data_static:/home/app/src/app/static:ro
       - cache_nginx:/var/cache/nginx
       - state_nginx:/etc/nginx
+    links:
+      - web-app
     depends_on:
       - web-app
     networks:
       - backend
     read_only: true
   postgres:
-    image: postgres:15
+    image: postgres:17.4
     container_name: postgres_jan
     restart: unless-stopped
+    tmpfs:
+      - /run
+      - /tmp
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
@@ -46,4 +53,4 @@ volumes:
   pgdata: {}
 
 networks:
-  backend: {}
+  backend:

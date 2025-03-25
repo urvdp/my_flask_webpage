@@ -1,15 +1,25 @@
-version: '0.1'
+
+x-shared-env: &shared-env
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: dev-password
+  POSTGRES_DB: me
 
 services:
     web-app:
         environment:
+            <<: *shared-env
             FLASK_ENV: development
             VIRTUAL_HOST: localhost
+            DB_HOST: postgres
+            DB_PORT: 5432
     nginx:
+      volumes:
+        - ./certs/cert.pem:/etc/nginx/certs/localhost.crt:ro
+        - ./certs/key.pem:/etc/nginx/certs/localhost.key:ro
       ports:
         - "80:80"
-        - "443:8080"
+        - "8080:443"
 
     postgres:
       environment:
-        POSTGRES_PASSWORD: dev-password
+        <<: *shared-env

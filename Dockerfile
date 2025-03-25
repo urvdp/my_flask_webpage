@@ -10,7 +10,10 @@ WORKDIR /home/app
 # Install build dependencies (gcc for uwsgi)
 RUN apt-get update && apt-get install -y \
     build-essential \
-    gcc git \
+    gcc \
+    git \
+    libpq-dev \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the latest version of pip
