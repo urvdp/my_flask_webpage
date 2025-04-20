@@ -4,7 +4,9 @@ services:
     environment:
       FLASK_ENV: production
       VIRTUAL_HOST: ${HOST_DOMAIN}
-      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@{DB_HOST}:5432/${DB_NAME}
+      LETSENCRYPT_HOST: ${HOST_DOMAIN}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}
   nginx:
     restart: unless-stopped
     volumes:
@@ -19,10 +21,9 @@ services:
     image: nginxproxy/acme-companion:2.5.2
     depends_on:
       - nginx
+    volumes_from:
+      - nginx
     volumes:
-      - data_static:/home/app/src/app/static:ro
-      - cache_nginx:/var/cache/nginx
-      - state_nginx:/etc/nginx
       - certs:/etc/nginx/certs:rw
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
@@ -30,9 +31,8 @@ services:
       - /etc/acme.sh
     environment:
       DEFAULT_EMAIL: ${LETSENCRYPT_EMAIL:?}
-      NGINX_PROXY_CONTAINER: nginx
-      NGINX_DOCKER_GEN_CONTAINER: nginx
-
+    networks:
+      - backend
   postgres:
     environment:
       POSTGRES_USER: ${DB_USER}
