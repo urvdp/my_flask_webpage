@@ -19,9 +19,10 @@ services:
     image: nginxproxy/acme-companion:2.5.2
     depends_on:
       - nginx
-    volumes_from:
-      - nginx
     volumes:
+      - data_static:/home/app/src/app/static:ro
+      - cache_nginx:/var/cache/nginx
+      - state_nginx:/etc/nginx
       - certs:/etc/nginx/certs:rw
       - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html

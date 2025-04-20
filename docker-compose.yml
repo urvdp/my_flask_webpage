@@ -19,7 +19,6 @@ services:
     image: nginxproxy/nginx-proxy:1.7
     tmpfs:
       - /var/run
-      - /var/cache/nginx
       - /tmp
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
