@@ -15,6 +15,7 @@ login.login_view = 'login' # handle dynamic login before accessing a protected p
 
 if flask_env:
     app.config.from_object(config_map[flask_env])
+    print("Loading config from: ", config_map[flask_env])
 else: # as fallback, but default is development
     app.config.from_object(Config)
 
