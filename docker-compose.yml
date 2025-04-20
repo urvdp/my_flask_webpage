@@ -53,4 +53,4 @@ volumes:
   pgdata: {}
 
 networks:
-  backend:
+  backend: {}
