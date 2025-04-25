@@ -3,8 +3,8 @@ services:
   web-app:
     environment:
       FLASK_ENV: production
-      VIRTUAL_HOST: ${HOST_DOMAIN}
-      LETSENCRYPT_HOST: ${HOST_DOMAIN}
+      VIRTUAL_HOST: "${HOST_DOMAIN}, www.${HOST_DOMAIN}, jan.${HOST_DOMAIN}"
+      LETSENCRYPT_HOST: "${HOST_DOMAIN}, www.${HOST_DOMAIN}, jan.${HOST_DOMAIN}"
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
       DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}
   nginx:
