@@ -48,7 +48,7 @@ def logout():
 
 @app.route('/projects')
 def projects():
-    projects = models.Project.query.all()
+    projects = models.Project.query.order_by(models.Project.id).all()
     return render_template('projects.html', title='Projects', projects=projects)
 
 

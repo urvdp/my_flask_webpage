@@ -102,6 +102,13 @@ On Linux:
 docker exec -it <container_id> bash
 python -m app.setup.init_db
 ```
+
+In productive environment:
+```bash
+docker exec -it <container_id> bash
+ubuntu@023a4a99b06e:/home/app/src$ python -m setup.init_db
+```
+
 ## Docker Compose Multi-Container Environment 
 
 So far, we have built the image and run the container. Now we will use Docker Compose to implement additional services

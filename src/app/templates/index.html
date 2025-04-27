@@ -42,7 +42,7 @@
 
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
-                {% for i in range(projects|length + 1) %}
+                {% for i in range(projects|length) %}
                     <button type="button" data-bs-target="#demo" data-bs-slide-to="{{ i }}"
                             class="{% if i == 0 %}active{% endif %}"></button>
                 {% endfor %}
@@ -142,8 +142,8 @@
                                     <div class="col-md-9">
                                         <p><i>Bachelor of Science</i>, Mechatronics and Information Technology</p>
                                         <p><strong>Thesis:</strong>
-                                            Real-Time Hierarchical Compliance Control: Integrating Self-Collision and
-                                            Joint Limit Avoidance Mechanisms
+                                            "Real-Time Hierarchical Compliance Control: Integrating Self-Collision and
+                                            Joint Limit Avoidance Mechanisms"
                                         </p>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                                         Aug 2024 - Dec 2024
                                     </div>
                                     <div class="col-md-9">
-                                        <p><i>Exchange semester</i>, study program "Ingenieria Electronica" (electrical
+                                        <p><i>Exchange semester</i>, study program "Ingeniería Electronica" (electrical
                                             engineering) in Valparaiso, Chile
                                         </p>
                                         <p>
